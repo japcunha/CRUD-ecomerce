@@ -1,4 +1,4 @@
-import { Product } from "../models/Product";
+import { Product } from "../models/Product.js";
 
 // criando produto:
 exports.createProduct = async (req, res) => {
@@ -16,7 +16,7 @@ exports.getProducts = async (req, res) => {
     const products = await Product.find();
     res.json(products);
   } catch (err) {
-    res.status(500)({ error: err.message });
+    res.status(500).json({ error: err.message });
   }
 };
 

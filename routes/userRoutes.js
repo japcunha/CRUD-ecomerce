@@ -1,7 +1,8 @@
-const express = require("express");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
-const User = require("../models/User");
+import express from "express";
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
+import User from "../models/user.js";
+import mongoose from "mongoose";
 
 const router = express.Router();
 
@@ -30,4 +31,4 @@ router.post("/login", async (req, res) => {
   res.json({ token, isAdm: user.isAdmin });
 });
 
-module.exports = router;
+export default router;
