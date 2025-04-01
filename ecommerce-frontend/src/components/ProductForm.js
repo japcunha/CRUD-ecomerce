@@ -1,13 +1,13 @@
-import React, { useState } from " reaact";
+import React, { useState } from " react";
 import api from "../services/api";
 
 const ProductForm = ({ onProductAdd }) => {
-  const [name, setName] = useState("");
+  const [name,setName] = useState("");
   const [description, setDescription] = useState("");
-  const [price, setPrice] = useState("");
+  const [price,setPrice] =useState("");
 
-  const handleSubmit = async (a) => {
-    a.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
       const newProduct = { name, description, price: parseFloat(price) };
       await api.post("/products", newProduct);
@@ -27,24 +27,26 @@ const ProductForm = ({ onProductAdd }) => {
         type="text"
         placeholder="Nome"
         value={name}
-        onChange={(a) => setName(a.target.value)}
+        onChange={(e) => setName(e.target.value)}
         required
       />
       <input
         type="text"
         placeholder="Descrição"
         value={description}
-        onChange={(a) => setDescription(a.target.value)}
+        onChange={(e) => setDescription(e.target.value)}
         required
       />
       <input
         type="number"
         placeholer="preço"
         value={price}
-        onChange={(a) => setPrice(a.target.value)}
+        onChange={(e) => setPrice(e.target.value)}
         required
       />
       <button type="submit"> Cadastrar </button>
     </Form>
   );
 };
+
+export default ProductForm;
